@@ -1,0 +1,35 @@
+Readme For Running this Program
+
+1> Run the make File by entering 'make' command
+2> Run the output(Host) with 2 arguments (arg1 arg2)
+   here arg1 is Number of Philosspher Process
+        arg2 is Number of Iterations for each Philosopher
+        
+   example
+   ./Host 4 3
+
+3> For Re-Run run 'make clean' followed by 'make' command.
+
+
+Module Functionality
+
+It has 2 progarms and 1 header file namely:-
+
+1>sem.h -> This header file contains Structure semaphore which will be used across all the philosopher process. We are creating a backing file for storing this structure.
+           We have 7 functions inside it to operate on the structure semaphore
+           1>semaphore_create -> For initilaizing the mutex variables,philosopher mutex,philosopher conditional varaibales, mutex conditional variables,barrier
+                                  barrier conditional variables,count and states of each philosopher. mmap is performed here
+           2>semaphore_open -> It will open mmap memory address in all the philospher processes to modify it
+           3>semaphore_post -> It will used to signal mutex in processes
+           4>semaphore_wait -> It will used to wait mutex in processes
+           5>semaphore_phil_post -> It will used to signal mutex in philospher process with the process number as an argument
+           6>semaphore_phil_wait -> It will used to wait mutex in philospher process with the process number as an argument
+           7>semaphore_close -> It will munmap the shared memory address
+
+2>Host.c-> It will get number of philosopher and number of iteration for each philosopher as command arguments. It will create and initilaize the structure semaphore by calling
+           the function of semaphore_create  and fork the number of philospher processes
+           
+           
+3>Philosopher.c -> It will implemnt the dining philospher problem such that each process is a philosopher
+
+
